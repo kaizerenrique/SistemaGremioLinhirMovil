@@ -12,7 +12,7 @@ android {
         applicationId = "online.linhir.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1000
+        versionCode = 100
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
