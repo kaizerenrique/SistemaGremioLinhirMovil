@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Splash Screen -->
+    <style name="Theme.LinhirApp.Splash" parent="Theme.SplashScreen">
 
+        <!-- Color de fondo -->
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+
+        <!-- Icono del splash -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+
+        <!-- Duración de la animación -->
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+
+        <!-- Tema al que transicionar -->
+        <item name="postSplashScreenTheme">@style/Theme.LinhirApp</item>
+
+    </style>
 </resources>
