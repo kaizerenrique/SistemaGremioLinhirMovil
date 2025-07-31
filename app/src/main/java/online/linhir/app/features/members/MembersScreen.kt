@@ -1,4 +1,4 @@
-package online.linhir.app.features.home
+package online.linhir.app.features.members
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import online.linhir.app.ui.theme.LinhirAppTheme
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun MembersScreen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         BodyContent()
     }
@@ -33,8 +33,8 @@ fun BodyContent() {
 
 @Preview (showBackground = true)
 @Composable
-fun HomeScreenPreview() {
+fun MembersScreenPreview() {
     LinhirAppTheme {
-        HomeScreen(navController = NavController(LocalContext.current))
+        MembersScreen(navController = NavController(LocalContext.current))
     }
 }

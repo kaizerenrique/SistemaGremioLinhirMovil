@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Linhir</string>
+
+    <string name="starting_adventure">Iniciando...</string>
+    <string name="albion_guild">Gremio de Albion Online</string>
+    <string name="continue_with_discord">Continuar con Discord</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
 </resources>
