@@ -2,7 +2,6 @@ package online.linhir.app.features.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,8 +20,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -30,7 +27,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -57,7 +53,6 @@ import online.linhir.app.R
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.components.buttons.DiscordButton
-import online.linhir.app.ui.components.buttons.IconPosition
 import online.linhir.app.ui.theme.LinhirAppTheme
 
 @Composable
@@ -234,7 +229,7 @@ private fun BodyContent(){
                         CustomButton(
                             text = stringResource(R.string.forgot_password),
                             onClick = { },
-                            variant = ButtonVariant.TERTIARY
+                            variant = ButtonVariant.TEXT
                         )
                     }
 
@@ -244,7 +239,7 @@ private fun BodyContent(){
                         text = stringResource(R.string.login),
                         onClick = { },
                         enabled = email.isNotBlank() && password.isNotBlank(),
-                        variant = ButtonVariant.PRIMARY,
+                        variant = ButtonVariant.FILLED,
                         fillMaxWidth = true
                     )
 
@@ -257,7 +252,7 @@ private fun BodyContent(){
                         CustomButton(
                             text = stringResource(R.string.no_account),
                             onClick = { },
-                            variant = ButtonVariant.TERTIARY
+                            variant = ButtonVariant.TEXT
                         )
                     }
                 }

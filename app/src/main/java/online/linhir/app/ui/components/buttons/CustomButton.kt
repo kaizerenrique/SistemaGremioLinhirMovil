@@ -26,11 +26,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import online.linhir.app.ui.theme.LinhirAppTheme
+import online.linhir.app.ui.theme.getCustomColors
 
 enum class ButtonVariant {
-    PRIMARY,
-    SECONDARY,
-    TERTIARY
+    FILLED,
+    OUTLINED,
+    TEXT
 }
 
 enum class IconPosition {
@@ -43,12 +44,14 @@ fun CustomButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    variant: ButtonVariant = ButtonVariant.PRIMARY,
+    variant: ButtonVariant = ButtonVariant.FILLED,
     enabled: Boolean = true,
     icon: ImageVector? = null,
     iconPosition: IconPosition = IconPosition.START,
     fillMaxWidth: Boolean = false
 ) {
+    val customColors = getCustomColors()
+
     val buttonModifier = modifier
         .then(
             if (fillMaxWidth) Modifier.fillMaxWidth() else Modifier
@@ -56,7 +59,7 @@ fun CustomButton(
         .height(48.dp)
 
     when (variant) {
-        ButtonVariant.PRIMARY -> {
+        ButtonVariant.FILLED -> {
             Button(
                 onClick = onClick,
                 modifier = buttonModifier,
@@ -66,8 +69,8 @@ fun CustomButton(
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = MaterialTheme.colorScheme.onPrimary,
-                    disabledContainerColor = MaterialTheme.colorScheme.outline,
-                    disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    disabledContainerColor = customColors.gray200,
+                    disabledContentColor = customColors.gray500
                 )
             ) {
                 ButtonContent(
@@ -77,7 +80,7 @@ fun CustomButton(
                 )
             }
         }
-        ButtonVariant.SECONDARY -> {
+        ButtonVariant.OUTLINED -> {
             OutlinedButton(
                 onClick = onClick,
                 modifier = buttonModifier,
@@ -87,14 +90,12 @@ fun CustomButton(
                     containerColor = Color.Transparent,
                     contentColor = MaterialTheme.colorScheme.primary,
                     disabledContainerColor = Color.Transparent,
-                    disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    disabledContentColor = customColors.gray500
                 ),
-                border = ButtonDefaults.outlinedButtonBorder.copy(
-                    brush = BorderStroke(
-                        width = 1.dp,
-                        color = if (enabled) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.outline
-                    ).brush
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = if (enabled) MaterialTheme.colorScheme.primary
+                    else customColors.gray300
                 )
             ) {
                 ButtonContent(
@@ -104,7 +105,7 @@ fun CustomButton(
                 )
             }
         }
-        ButtonVariant.TERTIARY -> {
+        ButtonVariant.TEXT -> {
             TextButton(
                 onClick = onClick,
                 modifier = buttonModifier,
@@ -114,7 +115,7 @@ fun CustomButton(
                     containerColor = Color.Transparent,
                     contentColor = MaterialTheme.colorScheme.primary,
                     disabledContainerColor = Color.Transparent,
-                    disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    disabledContentColor = customColors.gray500
                 )
             ) {
                 ButtonContent(
@@ -179,7 +180,7 @@ fun CustomButtonPreview() {
                 text = "Iniciar Sesión",
                 onClick = { },
                 enabled = false,
-                variant = ButtonVariant.PRIMARY,
+                variant = ButtonVariant.FILLED,
                 fillMaxWidth = true
             )
 
@@ -188,7 +189,7 @@ fun CustomButtonPreview() {
                 text = "Cancelar",
                 onClick = { },
                 enabled = false,
-                variant = ButtonVariant.SECONDARY,
+                variant = ButtonVariant.OUTLINED,
                 fillMaxWidth = true
             )
 
@@ -197,7 +198,7 @@ fun CustomButtonPreview() {
                 text = "¿Olvidaste tu contraseña?",
                 onClick = { },
                 enabled = false,
-                variant = ButtonVariant.TERTIARY,
+                variant = ButtonVariant.TEXT,
                 fillMaxWidth = true
             )
         }
