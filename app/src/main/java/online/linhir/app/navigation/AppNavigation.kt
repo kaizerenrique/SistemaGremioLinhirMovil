@@ -6,14 +6,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import online.linhir.app.features.home.HomeScreen
 import online.linhir.app.features.login.LoginScreen
-import online.linhir.app.features.splash.SplashScreen
+import online.linhir.app.features.validation.ValidationScreen
 
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreens.SplashScreen.route){
-        composable(route = AppScreens.SplashScreen.route){
-            SplashScreen(navController)
+    NavHost(navController = navController, startDestination = AppScreens.ValidationScreen.route){
+        composable(route = AppScreens.ValidationScreen.route){
+            ValidationScreen(navController)
         }
         composable(route = AppScreens.LoginScreen.route){
             LoginScreen(navController)

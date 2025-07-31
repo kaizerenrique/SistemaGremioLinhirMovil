@@ -1,4 +1,4 @@
-package online.linhir.app.features.splash
+package online.linhir.app.features.validation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,11 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
@@ -41,7 +38,7 @@ import online.linhir.app.navigation.AppScreens
 import online.linhir.app.ui.theme.LinhirAppTheme
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun ValidationScreen(navController: NavController) {
     var showInitializing by remember { mutableStateOf(false) }
 
     LaunchedEffect(true) {
@@ -50,7 +47,7 @@ fun SplashScreen(navController: NavController) {
         delay(2000)
 
         navController.navigate(AppScreens.LoginScreen.route) {
-            popUpTo(AppScreens.SplashScreen.route) {
+            popUpTo(AppScreens.ValidationScreen.route) {
                 inclusive = true
             }
         }
@@ -116,8 +113,8 @@ fun BodyContent(
 
 @Preview (showBackground = true)
 @Composable
-fun SplashScreenPreview() {
+fun ValidationScreenPreview() {
     LinhirAppTheme {
-        SplashScreen(navController = NavController(LocalContext.current))
+        ValidationScreen(navController = NavController(LocalContext.current))
     }
 }
