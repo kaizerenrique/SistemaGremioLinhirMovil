@@ -84,14 +84,14 @@ private fun BodyContent(){
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.6f))
+            .background(Color.Black.copy(alpha = 0.5f))
     )
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp),
+            .padding(16.dp, 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -127,7 +127,7 @@ private fun BodyContent(){
             )
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -189,8 +189,6 @@ private fun BodyContent(){
                 )
             }
         }
-
-        Spacer(modifier = Modifier.height(24.dp))
     }
 }
 
@@ -261,7 +259,7 @@ private fun EmailPasswordForm(
             )
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         OutlinedTextField(
             value = password,
@@ -293,7 +291,7 @@ private fun EmailPasswordForm(
             )
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -311,7 +309,7 @@ private fun EmailPasswordForm(
             )
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             onClick = onLoginClick,
@@ -334,7 +332,7 @@ private fun EmailPasswordForm(
             )
         }
 
-        /*Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -350,7 +348,7 @@ private fun EmailPasswordForm(
                     .clickable {}
                     .padding(8.dp)
             )
-        }*/
+        }
     }
 }
 

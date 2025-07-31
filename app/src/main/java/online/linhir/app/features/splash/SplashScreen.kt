@@ -78,7 +78,7 @@ fun BodyContent(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.6f))
+            .background(Color.Black.copy(alpha = 0.5f))
     )
 
     Column(
