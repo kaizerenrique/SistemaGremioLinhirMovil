@@ -28,8 +28,7 @@ fun LoadingScreen(
         verticalArrangement = Arrangement.Center
     ) {
         LoadingIndicator(
-            size = 48.dp,
-            color = MaterialTheme.colorScheme.primary
+            size = 48.dp
         )
 
         Spacer(modifier = Modifier.height(24.dp))

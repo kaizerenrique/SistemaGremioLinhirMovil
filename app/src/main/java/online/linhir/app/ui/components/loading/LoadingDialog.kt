@@ -55,8 +55,7 @@ fun LoadingDialog(
                     verticalArrangement = Arrangement.Center
                 ) {
                     LoadingIndicator(
-                        size = 32.dp,
-                        color = MaterialTheme.colorScheme.primary
+                        size = 32.dp
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
