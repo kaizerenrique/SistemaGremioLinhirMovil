@@ -6,21 +6,23 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import online.linhir.app.R
@@ -39,27 +41,26 @@ fun DrawerContent(
     currentRoute: String,
     onItemClick: (String) -> Unit,
     modifier: Modifier = Modifier,
-    userName: String = "Usuario",
-    userEmail: String = "usuario@linhir.online"
+    appVersion: String = "1.0.0"
 ) {
     val menuItems = listOf(
         DrawerMenuItem(
-            title = "Inicio",
+            title = stringResource(R.string.home),
             icon = Icons.Default.Home,
             route = "home_screen",
             isSelected = currentRoute == "home_screen"
         ),
         DrawerMenuItem(
-            title = "Integrantes",
+            title = stringResource(R.string.members),
             icon = Icons.Default.Person,
             route = "members_screen",
             isSelected = currentRoute == "members_screen"
         ),
         DrawerMenuItem(
-            title = "Pagos",
+            title = stringResource(R.string.payments),
             iconDrawable = R.drawable.ic_money,
-            route = "members_screen",
-            isSelected = currentRoute == "members_screen"
+            route = "payments_screen",
+            isSelected = currentRoute == "payments_screen"
         ),
     )
 
@@ -70,10 +71,7 @@ fun DrawerContent(
             .background(MaterialTheme.colorScheme.surface)
             .padding(16.dp)
     ) {
-        DrawerHeader(
-            userName = userName,
-            userEmail = userEmail
-        )
+        DrawerHeader()
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -90,6 +88,20 @@ fun DrawerContent(
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Versión $appVersion",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
 
@@ -100,8 +112,7 @@ fun DrawerContentPreview() {
         DrawerContent(
             currentRoute = "home_screen",
             onItemClick = { },
-            userName = "Kaizer Enrique",
-            userEmail = "kaizer@linhir.online"
+            appVersion = "1.0.0"
         )
     }
 }

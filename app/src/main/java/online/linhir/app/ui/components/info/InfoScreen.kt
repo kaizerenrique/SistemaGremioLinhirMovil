@@ -54,45 +54,47 @@ fun InfoScreen(
             textAlign = TextAlign.Center
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        if (onAction != null || onGoBack != null) {
+            Spacer(modifier = Modifier.height(32.dp))
 
-        when {
-            onAction != null && onGoBack != null -> {
-                CustomButton(
-                    text = actionButtonText,
-                    onClick = onAction,
-                    variant = ButtonVariant.FILLED,
-                    color = ButtonColor.INFO,
-                    modifier = Modifier.width(200.dp)
-                )
+            when {
+                onAction != null && onGoBack != null -> {
+                    CustomButton(
+                        text = actionButtonText,
+                        onClick = onAction,
+                        variant = ButtonVariant.FILLED,
+                        color = ButtonColor.INFO,
+                        modifier = Modifier.width(200.dp)
+                    )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
-                CustomButton(
-                    text = goBackButtonText,
-                    onClick = onGoBack,
-                    variant = ButtonVariant.OUTLINED,
-                    color = ButtonColor.INFO,
-                    modifier = Modifier.width(200.dp)
-                )
-            }
-            onAction != null -> {
-                CustomButton(
-                    text = actionButtonText,
-                    onClick = onAction,
-                    variant = ButtonVariant.FILLED,
-                    color = ButtonColor.INFO,
-                    modifier = Modifier.width(200.dp)
-                )
-            }
-            onGoBack != null -> {
-                CustomButton(
-                    text = goBackButtonText,
-                    onClick = onGoBack,
-                    variant = ButtonVariant.FILLED,
-                    color = ButtonColor.INFO,
-                    modifier = Modifier.width(200.dp)
-                )
+                    CustomButton(
+                        text = goBackButtonText,
+                        onClick = onGoBack,
+                        variant = ButtonVariant.OUTLINED,
+                        color = ButtonColor.INFO,
+                        modifier = Modifier.width(200.dp)
+                    )
+                }
+                onAction != null -> {
+                    CustomButton(
+                        text = actionButtonText,
+                        onClick = onAction,
+                        variant = ButtonVariant.FILLED,
+                        color = ButtonColor.INFO,
+                        modifier = Modifier.width(200.dp)
+                    )
+                }
+                onGoBack != null -> {
+                    CustomButton(
+                        text = goBackButtonText,
+                        onClick = onGoBack,
+                        variant = ButtonVariant.FILLED,
+                        color = ButtonColor.INFO,
+                        modifier = Modifier.width(200.dp)
+                    )
+                }
             }
         }
     }
@@ -100,13 +102,13 @@ fun InfoScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun InfoScreenPreview() {
+fun InfoScreenOneButtonPreview() {
     LinhirAppTheme {
         InfoScreen(
-            title = "Bienvenido",
-            message = "Esta es tu primera vez en la aplicación del gremio Linhir. Te guiaremos para que conozcas todas las funciones disponibles.",
+            title = "Función en desarrollo",
+            message = "Esta característica estará disponible próximamente. Te notificaremos cuando esté lista.",
             onAction = { },
-            onGoBack = { }
+            actionButtonText = "Notificarme"
         )
     }
 }

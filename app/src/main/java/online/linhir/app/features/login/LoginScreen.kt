@@ -68,7 +68,9 @@ fun LoginScreen(navController: NavController) {
 }
 
 @Composable
-private fun BodyContent(navController: NavController){
+private fun BodyContent(
+    navController: NavController
+){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }

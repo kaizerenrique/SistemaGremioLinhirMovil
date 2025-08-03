@@ -84,3 +84,25 @@ fun DrawerMenuItem(
         )
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun DrawerMenuItemPreview() {
+    LinhirAppTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp)
+        ) {
+            DrawerMenuItem(
+                item = DrawerMenuItem(
+                    title = "Inicio",
+                    icon = Icons.Default.Home,
+                    route = "home_screen",
+                    isSelected = true
+                ),
+                onClick = { }
+            )
+        }
+    }
+}
