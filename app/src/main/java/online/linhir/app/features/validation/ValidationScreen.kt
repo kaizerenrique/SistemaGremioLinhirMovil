@@ -42,7 +42,7 @@ fun ValidationScreen(navController: NavController) {
     var showInitializing by remember { mutableStateOf(false) }
 
     LaunchedEffect(true) {
-        delay(3000)
+        delay(2000)
         showInitializing = true
         delay(2000)
 

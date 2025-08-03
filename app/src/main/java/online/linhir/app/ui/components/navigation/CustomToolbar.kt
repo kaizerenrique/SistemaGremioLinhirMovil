@@ -2,7 +2,9 @@ package online.linhir.app.ui.components.navigation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
@@ -11,6 +13,7 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -55,71 +58,76 @@ fun CustomToolbar(
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
-    TopAppBar(
-        title = {
-            if (subtitle != null) {
-                TitleWithSubtitle(
-                    title = title,
-                    subtitle = subtitle,
-                    contentColor = contentColor
-                )
-            } else {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold
-                    ),
-                    color = contentColor,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        },
-        modifier = modifier,
-        navigationIcon = {
-            when (type) {
-                ToolbarType.HOME -> {
-                    IconButton(onClick = onNavigationClick) {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = "Abrir menú",
-                            tint = contentColor
-                        )
-                    }
-                }
-                ToolbarType.BACK -> {
-                    IconButton(onClick = onNavigationClick) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Regresar",
-                            tint = contentColor
-                        )
-                    }
-                }
-                ToolbarType.SIMPLE -> {
-                    // Sin icono de navegación
-                }
-            }
-        },
-        actions = {
-            actions.forEach { action ->
-                IconButton(onClick = action.onClick) {
-                    Icon(
-                        imageVector = action.icon,
-                        contentDescription = action.contentDescription,
-                        tint = contentColor
+    Column(modifier = modifier) {
+        TopAppBar(
+            title = {
+                if (subtitle != null) {
+                    TitleWithSubtitle(
+                        title = title,
+                        subtitle = subtitle,
+                        contentColor = contentColor
+                    )
+                } else {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold
+                        ),
+                        color = contentColor,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
-            }
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = backgroundColor,
-            titleContentColor = contentColor,
-            navigationIconContentColor = contentColor,
-            actionIconContentColor = contentColor
-        ),
-        scrollBehavior = scrollBehavior
-    )
+            },
+            navigationIcon = {
+                when (type) {
+                    ToolbarType.HOME -> {
+                        IconButton(onClick = onNavigationClick) {
+                            Icon(
+                                imageVector = Icons.Default.Menu,
+                                contentDescription = "Abrir menú",
+                                tint = contentColor
+                            )
+                        }
+                    }
+                    ToolbarType.BACK -> {
+                        IconButton(onClick = onNavigationClick) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = "Regresar",
+                                tint = contentColor
+                            )
+                        }
+                    }
+                    ToolbarType.SIMPLE -> {}
+                }
+            },
+            actions = {
+                actions.forEach { action ->
+                    IconButton(onClick = action.onClick) {
+                        Icon(
+                            imageVector = action.icon,
+                            contentDescription = action.contentDescription,
+                            tint = contentColor
+                        )
+                    }
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = backgroundColor,
+                titleContentColor = contentColor,
+                navigationIconContentColor = contentColor,
+                actionIconContentColor = contentColor
+            ),
+            scrollBehavior = scrollBehavior
+        )
+
+        HorizontalDivider(
+            modifier = Modifier.fillMaxWidth(),
+            thickness = 1.dp,
+            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f)
+        )
+    }
 }
 
 @Composable
@@ -154,7 +162,11 @@ private fun TitleWithSubtitle(
 @Composable
 fun CustomToolbarPreview() {
     LinhirAppTheme {
-        Column {
+        Column (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+        ){
             CustomToolbar(
                 title = stringResource(id = R.string.app_name),
                 subtitle = stringResource(R.string.albion_guild),
@@ -174,7 +186,7 @@ fun CustomToolbarPreview() {
                 )
             )
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             CustomToolbar(
                 title = "Miembros del Gremio",
@@ -190,7 +202,7 @@ fun CustomToolbarPreview() {
                 )
             )
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             CustomToolbar(
                 title = "Configuración",
