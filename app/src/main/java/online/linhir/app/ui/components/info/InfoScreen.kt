@@ -1,4 +1,4 @@
-package online.linhir.app.ui.components.error
+package online.linhir.app.ui.components.info
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,12 +21,12 @@ import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.theme.LinhirAppTheme
 
 @Composable
-fun ErrorScreen(
-    title: String = "Error",
+fun InfoScreen(
+    title: String = "Información",
     message: String,
-    onRetry: (() -> Unit)? = null,
+    onAction: (() -> Unit)? = null,
     onGoBack: (() -> Unit)? = null,
-    retryButtonText: String = "Reintentar",
+    actionButtonText: String = "Continuar",
     goBackButtonText: String = "Ir atrás"
 ) {
     Column(
@@ -36,7 +36,7 @@ fun ErrorScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        ErrorIndicator(
+        InfoIndicator(
             message = title,
             iconSize = 64.dp,
             textStyle = MaterialTheme.typography.headlineMedium.copy(
@@ -56,10 +56,10 @@ fun ErrorScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         when {
-            onRetry != null && onGoBack != null -> {
+            onAction != null && onGoBack != null -> {
                 CustomButton(
-                    text = retryButtonText,
-                    onClick = onRetry,
+                    text = actionButtonText,
+                    onClick = onAction,
                     variant = ButtonVariant.FILLED,
                     modifier = Modifier.width(200.dp)
                 )
@@ -73,10 +73,10 @@ fun ErrorScreen(
                     modifier = Modifier.width(200.dp)
                 )
             }
-            onRetry != null -> {
+            onAction != null -> {
                 CustomButton(
-                    text = retryButtonText,
-                    onClick = onRetry,
+                    text = actionButtonText,
+                    onClick = onAction,
                     variant = ButtonVariant.FILLED,
                     modifier = Modifier.width(200.dp)
                 )
@@ -95,12 +95,12 @@ fun ErrorScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun ErrorScreenPreview() {
+fun InfoScreenPreview() {
     LinhirAppTheme {
-        ErrorScreen(
-            title = "Sin conexión",
-            message = "No se pudo conectar al servidor. Verifica tu conexión a internet y vuelve a intentar.",
-            onRetry = { },
+        InfoScreen(
+            title = "Bienvenido",
+            message = "Esta es tu primera vez en la aplicación del gremio Linhir. Te guiaremos para que conozcas todas las funciones disponibles.",
+            onAction = { },
             onGoBack = { }
         )
     }
