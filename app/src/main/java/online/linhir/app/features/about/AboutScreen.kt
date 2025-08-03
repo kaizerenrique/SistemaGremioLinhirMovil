@@ -8,7 +8,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import online.linhir.app.R
-import online.linhir.app.features.home.BodyContent
 import online.linhir.app.ui.components.info.InfoScreen
 import online.linhir.app.ui.components.navigation.DrawerScaffold
 import online.linhir.app.ui.theme.LinhirAppTheme

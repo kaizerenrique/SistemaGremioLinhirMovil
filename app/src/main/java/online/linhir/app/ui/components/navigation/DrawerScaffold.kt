@@ -44,9 +44,7 @@ fun DrawerScaffold(
                     }
                     when (route) {
                         "home_screen" -> {
-                            navController.navigate(AppScreens.HomeScreen.route) {
-                                popUpTo(AppScreens.HomeScreen.route) { inclusive = true }
-                            }
+                            navController.navigate(AppScreens.HomeScreen.route)
                         }
                         "members_screen" -> {
                             navController.navigate(AppScreens.MembersScreen.route)
