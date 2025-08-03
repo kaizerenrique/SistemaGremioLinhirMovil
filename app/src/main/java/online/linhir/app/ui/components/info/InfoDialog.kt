@@ -27,6 +27,7 @@ import online.linhir.app.ui.components.buttons.ButtonColor
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.theme.LinhirAppTheme
+import online.linhir.app.ui.theme.getCustomColors
 
 @Composable
 fun InfoDialog(
@@ -34,7 +35,9 @@ fun InfoDialog(
     title: String = "Información",
     message: String,
     onDismiss: () -> Unit,
-    dismissButtonText: String = "Entendido"
+    dismissButtonText: String = "Entendido",
+    color: Color = getCustomColors().info,
+    buttonColor: ButtonColor = ButtonColor.INFO
 ) {
     if (isVisible) {
         Dialog(
@@ -63,7 +66,8 @@ fun InfoDialog(
                         iconSize = 32.dp,
                         textStyle = MaterialTheme.typography.headlineSmall.copy(
                             fontWeight = FontWeight.Bold
-                        )
+                        ),
+                        color = color
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -81,7 +85,7 @@ fun InfoDialog(
                         text = dismissButtonText,
                         onClick = onDismiss,
                         variant = ButtonVariant.FILLED,
-                        color = ButtonColor.INFO,
+                        color = buttonColor,
                         fillMaxWidth = true
                     )
                 }

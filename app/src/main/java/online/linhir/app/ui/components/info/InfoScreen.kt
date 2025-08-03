@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,6 +21,7 @@ import online.linhir.app.ui.components.buttons.ButtonColor
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.theme.LinhirAppTheme
+import online.linhir.app.ui.theme.getCustomColors
 
 @Composable
 fun InfoScreen(
@@ -28,7 +30,9 @@ fun InfoScreen(
     onAction: (() -> Unit)? = null,
     onGoBack: (() -> Unit)? = null,
     actionButtonText: String = "Continuar",
-    goBackButtonText: String = "Ir atrás"
+    goBackButtonText: String = "Ir atrás",
+    color: Color = getCustomColors().info,
+    buttonColor: ButtonColor = ButtonColor.INFO
 ) {
     Column(
         modifier = Modifier
@@ -42,7 +46,8 @@ fun InfoScreen(
             iconSize = 64.dp,
             textStyle = MaterialTheme.typography.headlineMedium.copy(
                 fontWeight = FontWeight.Bold
-            )
+            ),
+            color = color
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -63,7 +68,7 @@ fun InfoScreen(
                         text = actionButtonText,
                         onClick = onAction,
                         variant = ButtonVariant.FILLED,
-                        color = ButtonColor.INFO,
+                        color = buttonColor,
                         modifier = Modifier.width(200.dp)
                     )
 
@@ -73,7 +78,7 @@ fun InfoScreen(
                         text = goBackButtonText,
                         onClick = onGoBack,
                         variant = ButtonVariant.OUTLINED,
-                        color = ButtonColor.INFO,
+                        color = buttonColor,
                         modifier = Modifier.width(200.dp)
                     )
                 }
@@ -82,7 +87,7 @@ fun InfoScreen(
                         text = actionButtonText,
                         onClick = onAction,
                         variant = ButtonVariant.FILLED,
-                        color = ButtonColor.INFO,
+                        color = buttonColor,
                         modifier = Modifier.width(200.dp)
                     )
                 }
@@ -91,7 +96,7 @@ fun InfoScreen(
                         text = goBackButtonText,
                         onClick = onGoBack,
                         variant = ButtonVariant.FILLED,
-                        color = ButtonColor.INFO,
+                        color = buttonColor,
                         modifier = Modifier.width(200.dp)
                     )
                 }

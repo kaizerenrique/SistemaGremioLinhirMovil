@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -45,7 +46,8 @@ fun PaymentsScreen(navController: NavController) {
 fun BodyContent() {
     InfoScreen(
         title = stringResource(R.string.payments),
-        message = "La sección de pagos está en desarrollo. Aquí podrás gestionar las contribuciones del gremio, ver el estado de pagos de los miembros y administrar las finanzas del gremio Linhir."
+        message = "La sección de pagos está en desarrollo. Aquí podrás gestionar las contribuciones del gremio, ver el estado de pagos de los miembros y administrar las finanzas del gremio Linhir.",
+        color = MaterialTheme.colorScheme.primary
     )
 }
 

@@ -152,7 +152,13 @@ private fun BodyContent(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 DiscordButton(
-                    onClick = {},
+                    onClick = {
+                        navController.navigate(AppScreens.HomeScreen.route) {
+                            popUpTo(AppScreens.LoginScreen.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))

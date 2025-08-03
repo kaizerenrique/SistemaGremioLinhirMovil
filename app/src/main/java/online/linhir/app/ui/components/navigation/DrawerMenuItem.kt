@@ -30,8 +30,7 @@ import online.linhir.app.ui.theme.LinhirAppTheme
 fun DrawerMenuItem(
     item: DrawerMenuItem,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    isLogout: Boolean = false
+    modifier: Modifier = Modifier
 ) {
     val backgroundColor = when {
         item.isSelected -> MaterialTheme.colorScheme.primaryContainer
@@ -39,7 +38,6 @@ fun DrawerMenuItem(
     }
 
     val contentColor = when {
-        isLogout -> MaterialTheme.colorScheme.error
         item.isSelected -> MaterialTheme.colorScheme.onPrimaryContainer
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }

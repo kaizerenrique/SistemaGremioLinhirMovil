@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +31,8 @@ fun InfoMessage(
     isVisible: Boolean = true,
     icon: ImageVector = Icons.Default.Info,
     iconSize: Dp = 16.dp,
-    textStyle: TextStyle = MaterialTheme.typography.bodySmall
+    textStyle: TextStyle = MaterialTheme.typography.bodySmall,
+    color: Color = getCustomColors().info
 ) {
     if (isVisible && message.isNotBlank()) {
         Row(
@@ -44,7 +46,7 @@ fun InfoMessage(
                 imageVector = icon,
                 contentDescription = "Info",
                 modifier = Modifier.size(iconSize),
-                tint = getCustomColors().info
+                tint = color
             )
 
             Spacer(modifier = Modifier.width(6.dp))
@@ -52,7 +54,7 @@ fun InfoMessage(
             Text(
                 text = message,
                 style = textStyle,
-                color = getCustomColors().info
+                color = color
             )
         }
     }

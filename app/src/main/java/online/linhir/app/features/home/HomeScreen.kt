@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
@@ -111,7 +112,8 @@ fun HomeScreen(navController: NavController) {
 fun BodyContent() {
     InfoScreen(
         title = "¡Bienvenido al Gremio Linhir!",
-        message = "La aplicación del gremio está en desarrollo. Proximamente podrás acceder a todas las funciones como visualización de miembros, pagos y mucho más. Explora las opciones del menú para conocer las próximas características."
+        message = "La aplicación del gremio está en desarrollo. Proximamente podrás acceder a todas las funciones como visualización de miembros, pagos y mucho más. Explora las opciones del menú para conocer las próximas características.",
+        color = MaterialTheme.colorScheme.primary
     )
 }
 

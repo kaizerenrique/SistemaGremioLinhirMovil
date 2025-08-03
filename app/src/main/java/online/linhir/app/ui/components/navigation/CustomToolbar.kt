@@ -56,7 +56,7 @@ fun CustomToolbar(
     actions: List<ToolbarAction> = emptyList(),
     scrollBehavior: TopAppBarScrollBehavior? = null,
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
-    contentColor: Color = MaterialTheme.colorScheme.onSurface
+    contentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer
 ) {
     Column(modifier = modifier) {
         TopAppBar(

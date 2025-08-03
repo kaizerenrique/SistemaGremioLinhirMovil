@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -28,7 +29,8 @@ fun InfoIndicator(
     modifier: Modifier = Modifier,
     icon: ImageVector = Icons.Default.Info,
     iconSize: Dp = 20.dp,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    color: Color = getCustomColors().info
 ) {
     Column(
         modifier = modifier,
@@ -39,7 +41,7 @@ fun InfoIndicator(
             imageVector = icon,
             contentDescription = "Info",
             modifier = Modifier.size(iconSize),
-            tint = getCustomColors().info
+            tint = color
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -47,7 +49,7 @@ fun InfoIndicator(
         Text(
             text = message,
             style = textStyle,
-            color = getCustomColors().info,
+            color = color,
             textAlign = TextAlign.Center
         )
     }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -45,7 +46,8 @@ fun SettingsScreen(navController: NavController) {
 fun BodyContent() {
     InfoScreen(
         title = stringResource(R.string.settings),
-        message = "La sección de ajustes está en desarrollo. Aquí podrás personalizar tu experiencia en la aplicación, configurar notificaciones, cambiar el tema y gestionar tu cuenta del gremio Linhir."
+        message = "La sección de ajustes está en desarrollo. Aquí podrás personalizar tu experiencia en la aplicación, configurar notificaciones, cambiar el tema y gestionar tu cuenta del gremio Linhir.",
+        color = MaterialTheme.colorScheme.primary
     )
 }
 

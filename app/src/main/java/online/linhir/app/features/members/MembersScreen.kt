@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -45,7 +46,8 @@ fun MembersScreen(navController: NavController) {
 fun BodyContent() {
     InfoScreen(
         title = stringResource(R.string.members),
-        message = "La sección de integrantes está en desarrollo. Aquí podrás ver todos los miembros del gremio Linhir, sus estadísticas y más."
+        message = "La sección de integrantes está en desarrollo. Aquí podrás ver todos los miembros del gremio Linhir, sus estadísticas y más.",
+        color = MaterialTheme.colorScheme.primary
     )
 }
 
