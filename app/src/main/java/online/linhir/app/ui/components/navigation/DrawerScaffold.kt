@@ -8,12 +8,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
@@ -30,31 +26,18 @@ fun DrawerScaffold(
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    var selectedRoute by remember { mutableStateOf(currentRoute) }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
             DrawerContent(
-                currentRoute = selectedRoute,
+                currentRoute = currentRoute,
                 onItemClick = { route ->
-                    selectedRoute = route
                     scope.launch {
                         drawerState.close()
                     }
-                    when (route) {
-                        "home_screen" -> {
-                            navController.navigate(AppScreens.HomeScreen.route)
-                        }
-                        "members_screen" -> {
-                            navController.navigate(AppScreens.MembersScreen.route)
-                        }
-                        "payments_screen" -> {
-                            navController.navigate(AppScreens.PaymentsScreen.route)
-                        }
-                        "about_screen" -> {
-                            navController.navigate(AppScreens.AboutScreen.route)
-                        }
+                    if (route != currentRoute) {
+                        navigateToRoute(navController, route)
                     }
                 }
             )
@@ -80,6 +63,43 @@ fun DrawerScaffold(
                     .padding(paddingValues)
             ) {
                 content()
+            }
+        }
+    }
+}
+
+private fun navigateToRoute(navController: NavController, route: String) {
+    when (route) {
+        "home_screen" -> {
+            navController.navigate(AppScreens.HomeScreen.route) {
+                popUpTo(AppScreens.HomeScreen.route) {
+                    inclusive = true
+                }
+                launchSingleTop = true
+            }
+        }
+        "members_screen" -> {
+            navController.navigate(AppScreens.MembersScreen.route) {
+                popUpTo(AppScreens.MembersScreen.route) {
+                    inclusive = true
+                }
+                launchSingleTop = true
+            }
+        }
+        "payments_screen" -> {
+            navController.navigate(AppScreens.PaymentsScreen.route) {
+                popUpTo(AppScreens.PaymentsScreen.route) {
+                    inclusive = true
+                }
+                launchSingleTop = true
+            }
+        }
+        "about_screen" -> {
+            navController.navigate(AppScreens.AboutScreen.route) {
+                popUpTo(AppScreens.AboutScreen.route) {
+                    inclusive = true
+                }
+                launchSingleTop = true
             }
         }
     }
