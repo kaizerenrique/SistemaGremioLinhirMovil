@@ -1,6 +1,15 @@
 package online.linhir.app.navigation
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -17,29 +26,59 @@ import online.linhir.app.features.validation.ValidationScreen
 fun AppNavigation(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = AppScreens.ValidationScreen.route){
-        composable(route = AppScreens.ValidationScreen.route){
+        materialAnimation(route = AppScreens.ValidationScreen.route){
             ValidationScreen(navController)
         }
-        composable(route = AppScreens.LoginScreen.route){
+        materialAnimation(route = AppScreens.LoginScreen.route){
             LoginScreen(navController)
         }
-        composable(route = AppScreens.HomeScreen.route){
+        materialAnimation(route = AppScreens.HomeScreen.route){
             HomeScreen(navController)
         }
-        composable(route = AppScreens.MembersScreen.route){
+        materialAnimation(route = AppScreens.MembersScreen.route){
             MembersScreen(navController)
         }
-        composable(route = AppScreens.PaymentsScreen.route){
+        materialAnimation(route = AppScreens.PaymentsScreen.route){
             PaymentsScreen(navController)
         }
-        composable(route = AppScreens.AboutScreen.route){
+        materialAnimation(route = AppScreens.AboutScreen.route){
             AboutScreen(navController)
         }
-        composable(route = AppScreens.NotificationsScreen.route){
+        materialAnimation(route = AppScreens.NotificationsScreen.route){
             NotificationsScreen(navController)
         }
-        composable(route = AppScreens.SettingsScreen.route){
+        materialAnimation(route = AppScreens.SettingsScreen.route){
             SettingsScreen(navController)
         }
     }
+}
+
+fun NavGraphBuilder.materialAnimation(route: String, content: @Composable () -> Unit) {
+    composable(
+        route = route,
+        enterTransition = {
+            slideInHorizontally(
+                initialOffsetX = { it },
+                animationSpec = tween(300, easing = FastOutSlowInEasing)
+            ) + fadeIn(tween(300))
+        },
+        exitTransition = {
+            slideOutHorizontally(
+                targetOffsetX = { -it },
+                animationSpec = tween(300, easing = FastOutSlowInEasing)
+            ) + fadeOut(tween(300))
+        },
+        popEnterTransition = {
+            slideInHorizontally(
+                initialOffsetX = { -it },
+                animationSpec = tween(300, easing = FastOutSlowInEasing)
+            ) + fadeIn(tween(300))
+        },
+        popExitTransition = {
+            slideOutHorizontally(
+                targetOffsetX = { it },
+                animationSpec = tween(300, easing = FastOutSlowInEasing)
+            ) + fadeOut(tween(300))
+        }
+    ) { content() }
 }

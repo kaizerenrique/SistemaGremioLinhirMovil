@@ -72,7 +72,7 @@ private fun navigateToRoute(navController: NavController, route: String) {
     when (route) {
         "home_screen" -> {
             navController.navigate(AppScreens.HomeScreen.route) {
-                popUpTo(AppScreens.HomeScreen.route) {
+                popUpTo(0) {
                     inclusive = true
                 }
                 launchSingleTop = true
@@ -80,24 +80,24 @@ private fun navigateToRoute(navController: NavController, route: String) {
         }
         "members_screen" -> {
             navController.navigate(AppScreens.MembersScreen.route) {
-                popUpTo(AppScreens.MembersScreen.route) {
-                    inclusive = true
+                popUpTo(AppScreens.HomeScreen.route) {
+                    inclusive = false
                 }
                 launchSingleTop = true
             }
         }
         "payments_screen" -> {
             navController.navigate(AppScreens.PaymentsScreen.route) {
-                popUpTo(AppScreens.PaymentsScreen.route) {
-                    inclusive = true
+                popUpTo(AppScreens.HomeScreen.route) {
+                    inclusive = false
                 }
                 launchSingleTop = true
             }
         }
         "about_screen" -> {
             navController.navigate(AppScreens.AboutScreen.route) {
-                popUpTo(AppScreens.AboutScreen.route) {
-                    inclusive = true
+                popUpTo(AppScreens.HomeScreen.route) {
+                    inclusive = false
                 }
                 launchSingleTop = true
             }
