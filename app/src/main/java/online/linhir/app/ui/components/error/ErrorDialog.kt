@@ -82,19 +82,9 @@ fun ErrorDialog(
                     Spacer(modifier = Modifier.height(24.dp))
 
                     if (onRetry != null) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
+                        Column(
+                            modifier = Modifier.fillMaxWidth()
                         ) {
-                            CustomButton(
-                                text = dismissButtonText,
-                                onClick = onDismiss,
-                                variant = ButtonVariant.OUTLINED,
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            Spacer(modifier = Modifier.width(12.dp))
-
                             CustomButton(
                                 text = retryButtonText,
                                 onClick = {
@@ -102,7 +92,16 @@ fun ErrorDialog(
                                     onRetry()
                                 },
                                 variant = ButtonVariant.FILLED,
-                                modifier = Modifier.weight(1f)
+                                fillMaxWidth = true
+                            )
+
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            CustomButton(
+                                text = dismissButtonText,
+                                onClick = onDismiss,
+                                variant = ButtonVariant.OUTLINED,
+                                fillMaxWidth = true
                             )
                         }
                     } else {

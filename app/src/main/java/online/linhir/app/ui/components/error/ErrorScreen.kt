@@ -27,9 +27,9 @@ fun ErrorScreen(
     title: String = "Error",
     message: String,
     onRetry: (() -> Unit)? = null,
-    onGoHome: (() -> Unit)? = null,
+    onGoBack: (() -> Unit)? = null,
     retryButtonText: String = "Reintentar",
-    homeButtonText: String = "Ir al inicio",
+    goBackButtonText: String = "Ir atrás",
     backgroundColor: Color = MaterialTheme.colorScheme.background
 ) {
     Column(
@@ -60,7 +60,7 @@ fun ErrorScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         when {
-            onRetry != null && onGoHome != null -> {
+            onRetry != null && onGoBack != null -> {
                 CustomButton(
                     text = retryButtonText,
                     onClick = onRetry,
@@ -71,8 +71,8 @@ fun ErrorScreen(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 CustomButton(
-                    text = homeButtonText,
-                    onClick = onGoHome,
+                    text = goBackButtonText,
+                    onClick = onGoBack,
                     variant = ButtonVariant.OUTLINED,
                     modifier = Modifier.width(200.dp)
                 )
@@ -85,10 +85,10 @@ fun ErrorScreen(
                     modifier = Modifier.width(200.dp)
                 )
             }
-            onGoHome != null -> {
+            onGoBack != null -> {
                 CustomButton(
-                    text = homeButtonText,
-                    onClick = onGoHome,
+                    text = goBackButtonText,
+                    onClick = onGoBack,
                     variant = ButtonVariant.FILLED,
                     modifier = Modifier.width(200.dp)
                 )
@@ -105,7 +105,7 @@ fun ErrorScreenPreview() {
             title = "Sin conexión",
             message = "No se pudo conectar al servidor. Verifica tu conexión a internet y vuelve a intentar.",
             onRetry = { },
-            onGoHome = { }
+            onGoBack = { }
         )
     }
 }
