@@ -8,7 +8,9 @@ import online.linhir.app.features.about.AboutScreen
 import online.linhir.app.features.home.HomeScreen
 import online.linhir.app.features.login.LoginScreen
 import online.linhir.app.features.members.MembersScreen
+import online.linhir.app.features.notifications.NotificationsScreen
 import online.linhir.app.features.payments.PaymentsScreen
+import online.linhir.app.features.settings.SettingsScreen
 import online.linhir.app.features.validation.ValidationScreen
 
 @Composable
@@ -32,6 +34,12 @@ fun AppNavigation(){
         }
         composable(route = AppScreens.AboutScreen.route){
             AboutScreen(navController)
+        }
+        composable(route = AppScreens.NotificationsScreen.route){
+            NotificationsScreen(navController)
+        }
+        composable(route = AppScreens.SettingsScreen.route){
+            SettingsScreen(navController)
         }
     }
 }

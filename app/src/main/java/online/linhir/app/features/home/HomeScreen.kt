@@ -59,6 +59,9 @@ fun HomeScreen(navController: NavController) {
                         "payments_screen" -> {
                             navController.navigate(AppScreens.PaymentsScreen.route)
                         }
+                        "about_screen" -> {
+                            navController.navigate(AppScreens.AboutScreen.route)
+                        }
                     }
                 }
             )
@@ -78,12 +81,16 @@ fun HomeScreen(navController: NavController) {
                         ToolbarAction(
                             icon = Icons.Default.Notifications,
                             contentDescription = stringResource(R.string.notifications),
-                            onClick = {}
+                            onClick = {
+                                navController.navigate(AppScreens.NotificationsScreen.route)
+                            }
                         ),
                         ToolbarAction(
                             icon = Icons.Default.Settings,
                             contentDescription = stringResource(R.string.settings),
-                            onClick = {}
+                            onClick = {
+                                navController.navigate(AppScreens.SettingsScreen.route)
+                            }
                         )
                     )
                 )

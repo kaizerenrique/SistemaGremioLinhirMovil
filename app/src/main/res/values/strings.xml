@@ -13,6 +13,6 @@
     <string name="members">Integrantes</string>
     <string name="payments">Pagos</string>
     <string name="about">Acerca de</string>
-    <string name="settings">Ajustes</string>
     <string name="notifications">Notificaciones</string>
+    <string name="settings">Ajustes</string>
 </resources>

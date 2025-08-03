@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -61,6 +62,12 @@ fun DrawerContent(
             iconDrawable = R.drawable.ic_money,
             route = "payments_screen",
             isSelected = currentRoute == "payments_screen"
+        ),
+        DrawerMenuItem(
+            title = stringResource(R.string.about),
+            icon = Icons.Default.Info,
+            route = "about_screen",
+            isSelected = currentRoute == "about_screen"
         ),
     )
 
