@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import online.linhir.app.ui.components.buttons.ButtonColor
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.theme.LinhirAppTheme
@@ -80,6 +81,7 @@ fun InfoDialog(
                         text = dismissButtonText,
                         onClick = onDismiss,
                         variant = ButtonVariant.FILLED,
+                        color = ButtonColor.INFO,
                         fillMaxWidth = true
                     )
                 }

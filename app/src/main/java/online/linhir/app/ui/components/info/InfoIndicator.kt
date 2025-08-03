@@ -28,7 +28,6 @@ fun InfoIndicator(
     modifier: Modifier = Modifier,
     icon: ImageVector = Icons.Default.Info,
     iconSize: Dp = 20.dp,
-    color: Color = getCustomColors().info,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
     Column(
@@ -40,7 +39,7 @@ fun InfoIndicator(
             imageVector = icon,
             contentDescription = "Info",
             modifier = Modifier.size(iconSize),
-            tint = color
+            tint = getCustomColors().info
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -48,7 +47,7 @@ fun InfoIndicator(
         Text(
             text = message,
             style = textStyle,
-            color = color
+            color = getCustomColors().info
         )
     }
 }

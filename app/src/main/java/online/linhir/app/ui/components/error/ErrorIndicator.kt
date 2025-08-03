@@ -27,7 +27,6 @@ fun ErrorIndicator(
     modifier: Modifier = Modifier,
     icon: ImageVector = Icons.Default.Warning,
     iconSize: Dp = 20.dp,
-    color: Color = MaterialTheme.colorScheme.error,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
     Column(
@@ -39,7 +38,7 @@ fun ErrorIndicator(
             imageVector = icon,
             contentDescription = "Error",
             modifier = Modifier.size(iconSize),
-            tint = color
+            tint = MaterialTheme.colorScheme.error
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -47,7 +46,7 @@ fun ErrorIndicator(
         Text(
             text = message,
             style = textStyle,
-            color = color
+            color = MaterialTheme.colorScheme.error
         )
     }
 }

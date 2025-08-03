@@ -1,16 +1,13 @@
 package online.linhir.app.ui.components.error
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -26,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import online.linhir.app.ui.components.buttons.ButtonColor
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.theme.LinhirAppTheme
@@ -92,6 +90,7 @@ fun ErrorDialog(
                                     onRetry()
                                 },
                                 variant = ButtonVariant.FILLED,
+                                color = ButtonColor.ERROR,
                                 fillMaxWidth = true
                             )
 
@@ -101,6 +100,7 @@ fun ErrorDialog(
                                 text = dismissButtonText,
                                 onClick = onDismiss,
                                 variant = ButtonVariant.OUTLINED,
+                                color = ButtonColor.ERROR,
                                 fillMaxWidth = true
                             )
                         }
@@ -109,6 +109,7 @@ fun ErrorDialog(
                             text = dismissButtonText,
                             onClick = onDismiss,
                             variant = ButtonVariant.FILLED,
+                            color = ButtonColor.ERROR,
                             fillMaxWidth = true
                         )
                     }

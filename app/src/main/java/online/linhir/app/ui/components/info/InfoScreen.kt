@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import online.linhir.app.ui.components.buttons.ButtonColor
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.theme.LinhirAppTheme
@@ -61,6 +62,7 @@ fun InfoScreen(
                     text = actionButtonText,
                     onClick = onAction,
                     variant = ButtonVariant.FILLED,
+                    color = ButtonColor.INFO,
                     modifier = Modifier.width(200.dp)
                 )
 
@@ -70,6 +72,7 @@ fun InfoScreen(
                     text = goBackButtonText,
                     onClick = onGoBack,
                     variant = ButtonVariant.OUTLINED,
+                    color = ButtonColor.INFO,
                     modifier = Modifier.width(200.dp)
                 )
             }
@@ -78,6 +81,7 @@ fun InfoScreen(
                     text = actionButtonText,
                     onClick = onAction,
                     variant = ButtonVariant.FILLED,
+                    color = ButtonColor.INFO,
                     modifier = Modifier.width(200.dp)
                 )
             }
@@ -86,6 +90,7 @@ fun InfoScreen(
                     text = goBackButtonText,
                     onClick = onGoBack,
                     variant = ButtonVariant.FILLED,
+                    color = ButtonColor.INFO,
                     modifier = Modifier.width(200.dp)
                 )
             }
