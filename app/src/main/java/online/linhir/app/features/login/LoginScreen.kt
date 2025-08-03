@@ -50,6 +50,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import online.linhir.app.R
+import online.linhir.app.navigation.AppScreens
 import online.linhir.app.ui.components.buttons.ButtonVariant
 import online.linhir.app.ui.components.buttons.CustomButton
 import online.linhir.app.ui.components.buttons.DiscordButton
@@ -62,12 +63,12 @@ fun LoginScreen(navController: NavController) {
             .fillMaxSize()
             .systemBarsPadding()
     ) {
-        BodyContent()
+        BodyContent(navController)
     }
 }
 
 @Composable
-private fun BodyContent(){
+private fun BodyContent(navController: NavController){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -237,7 +238,13 @@ private fun BodyContent(){
 
                     CustomButton(
                         text = stringResource(R.string.login),
-                        onClick = { },
+                        onClick = {
+                            navController.navigate(AppScreens.HomeScreen.route) {
+                                popUpTo(AppScreens.LoginScreen.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
                         enabled = email.isNotBlank() && password.isNotBlank(),
                         variant = ButtonVariant.FILLED,
                         fillMaxWidth = true
