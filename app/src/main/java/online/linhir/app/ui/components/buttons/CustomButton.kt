@@ -34,6 +34,15 @@ enum class ButtonVariant {
     TEXT
 }
 
+enum class ButtonColor {
+    PRIMARY,
+    SECONDARY,
+    ERROR,
+    SUCCESS,
+    WARNING,
+    INFO
+}
+
 enum class IconPosition {
     START,
     END
@@ -45,12 +54,58 @@ fun CustomButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     variant: ButtonVariant = ButtonVariant.FILLED,
+    color: ButtonColor = ButtonColor.PRIMARY,
     enabled: Boolean = true,
     icon: ImageVector? = null,
     iconPosition: IconPosition = IconPosition.START,
     fillMaxWidth: Boolean = false
 ) {
     val customColors = getCustomColors()
+
+    val (containerColor, contentColor, disabledContainerColor, disabledContentColor, borderColor) = when (color) {
+        ButtonColor.PRIMARY -> listOf(
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.onPrimary,
+            customColors.gray200,
+            customColors.gray500,
+            MaterialTheme.colorScheme.primary
+        )
+        ButtonColor.SECONDARY -> listOf(
+            MaterialTheme.colorScheme.secondary,
+            MaterialTheme.colorScheme.onSecondary,
+            customColors.gray200,
+            customColors.gray500,
+            MaterialTheme.colorScheme.secondary
+        )
+        ButtonColor.ERROR -> listOf(
+            MaterialTheme.colorScheme.error,
+            MaterialTheme.colorScheme.onError,
+            customColors.gray200,
+            customColors.gray500,
+            MaterialTheme.colorScheme.error
+        )
+        ButtonColor.SUCCESS -> listOf(
+            customColors.success,
+            Color.White,
+            customColors.gray200,
+            customColors.gray500,
+            customColors.success
+        )
+        ButtonColor.WARNING -> listOf(
+            customColors.warning,
+            Color.White,
+            customColors.gray200,
+            customColors.gray500,
+            customColors.warning
+        )
+        ButtonColor.INFO -> listOf(
+            customColors.info,
+            Color.White,
+            customColors.gray200,
+            customColors.gray500,
+            customColors.info
+        )
+    }
 
     val buttonModifier = modifier
         .then(
@@ -67,10 +122,10 @@ fun CustomButton(
                 shape = RoundedCornerShape(8.dp),
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary,
-                    disabledContainerColor = customColors.gray200,
-                    disabledContentColor = customColors.gray500
+                    containerColor = containerColor,
+                    contentColor = contentColor,
+                    disabledContainerColor = disabledContainerColor,
+                    disabledContentColor = disabledContentColor
                 )
             ) {
                 ButtonContent(
@@ -88,14 +143,13 @@ fun CustomButton(
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color.Transparent,
-                    contentColor = MaterialTheme.colorScheme.primary,
+                    contentColor = borderColor,
                     disabledContainerColor = Color.Transparent,
-                    disabledContentColor = customColors.gray500
+                    disabledContentColor = disabledContentColor
                 ),
                 border = BorderStroke(
                     width = 1.dp,
-                    color = if (enabled) MaterialTheme.colorScheme.primary
-                    else customColors.gray300
+                    color = if (enabled) borderColor else customColors.gray300
                 )
             ) {
                 ButtonContent(
@@ -113,9 +167,9 @@ fun CustomButton(
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.textButtonColors(
                     containerColor = Color.Transparent,
-                    contentColor = MaterialTheme.colorScheme.primary,
+                    contentColor = borderColor,
                     disabledContainerColor = Color.Transparent,
-                    disabledContentColor = customColors.gray500
+                    disabledContentColor = disabledContentColor
                 )
             ) {
                 ButtonContent(
@@ -166,7 +220,6 @@ private fun ButtonContent(
     }
 }
 
-// Previews para mostrar las diferentes variantes
 @Preview(showBackground = true)
 @Composable
 fun CustomButtonPreview() {
@@ -175,30 +228,35 @@ fun CustomButtonPreview() {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Botón primario
             CustomButton(
-                text = "Iniciar Sesión",
+                text = "Primario",
                 onClick = { },
-                enabled = false,
+                color = ButtonColor.PRIMARY,
                 variant = ButtonVariant.FILLED,
                 fillMaxWidth = true
             )
 
-            // Botón secundario
             CustomButton(
-                text = "Cancelar",
+                text = "Error",
                 onClick = { },
-                enabled = false,
-                variant = ButtonVariant.OUTLINED,
+                color = ButtonColor.ERROR,
+                variant = ButtonVariant.FILLED,
                 fillMaxWidth = true
             )
 
-            // Botón terciario
             CustomButton(
-                text = "¿Olvidaste tu contraseña?",
+                text = "Éxito",
                 onClick = { },
-                enabled = false,
-                variant = ButtonVariant.TEXT,
+                color = ButtonColor.SUCCESS,
+                variant = ButtonVariant.FILLED,
+                fillMaxWidth = true
+            )
+
+            CustomButton(
+                text = "Información",
+                onClick = { },
+                color = ButtonColor.INFO,
+                variant = ButtonVariant.FILLED,
                 fillMaxWidth = true
             )
         }
