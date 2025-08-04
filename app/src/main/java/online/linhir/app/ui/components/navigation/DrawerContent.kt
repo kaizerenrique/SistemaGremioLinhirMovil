@@ -76,7 +76,7 @@ fun DrawerContent(
             .fillMaxHeight()
             .width(280.dp)
             .background(MaterialTheme.colorScheme.surface)
-            .padding(16.dp)
+            .padding(16.dp, 48.dp)
     ) {
         DrawerHeader()
 

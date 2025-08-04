@@ -29,8 +29,6 @@ fun DrawerHeader() {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(32.dp))
-
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo Linhir",
