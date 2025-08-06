@@ -1,5 +1,10 @@
 package online.linhir.app.navigation
 
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,7 +21,14 @@ import online.linhir.app.features.validation.ValidationScreen
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreens.ValidationScreen.route){
+    NavHost(
+        navController = navController,
+        startDestination = AppScreens.ValidationScreen.route,
+        enterTransition = { fadeIn(tween(400, easing = EaseIn)) },
+        exitTransition = { fadeOut(tween(400, easing = EaseOut)) },
+        popEnterTransition = { fadeIn(tween(400, easing = EaseIn)) },
+        popExitTransition = { fadeOut(tween(400, easing = EaseOut)) }
+    ){
         composable(route = AppScreens.ValidationScreen.route){
             ValidationScreen(navController)
         }
