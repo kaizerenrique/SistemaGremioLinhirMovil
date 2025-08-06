@@ -119,33 +119,13 @@ fun getCustomColors(): CustomColors {
         CustomColors(
             success = DarkSuccess,
             warning = DarkWarning,
-            info = DarkInfo,
-            gray50 = DarkGray50,
-            gray100 = DarkGray100,
-            gray200 = DarkGray200,
-            gray300 = DarkGray300,
-            gray400 = DarkGray400,
-            gray500 = DarkGray500,
-            gray600 = DarkGray600,
-            gray700 = DarkGray700,
-            gray800 = DarkGray800,
-            gray900 = DarkGray900
+            info = DarkInfo
         )
     } else {
         CustomColors(
             success = LightSuccess,
             warning = LightWarning,
-            info = LightInfo,
-            gray50 = LightGray50,
-            gray100 = LightGray100,
-            gray200 = LightGray200,
-            gray300 = LightGray300,
-            gray400 = LightGray400,
-            gray500 = LightGray500,
-            gray600 = LightGray600,
-            gray700 = LightGray700,
-            gray800 = LightGray800,
-            gray900 = LightGray900
+            info = LightInfo
         )
     }
 }
@@ -153,15 +133,5 @@ fun getCustomColors(): CustomColors {
 data class CustomColors(
     val success: Color,
     val warning: Color,
-    val info: Color,
-    val gray50: Color,
-    val gray100: Color,
-    val gray200: Color,
-    val gray300: Color,
-    val gray400: Color,
-    val gray500: Color,
-    val gray600: Color,
-    val gray700: Color,
-    val gray800: Color,
-    val gray900: Color
+    val info: Color
 )

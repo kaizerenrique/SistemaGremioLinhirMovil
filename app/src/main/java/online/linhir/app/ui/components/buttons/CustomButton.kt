@@ -2,6 +2,7 @@ package online.linhir.app.ui.components.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,6 +38,7 @@ enum class ButtonVariant {
 enum class ButtonColor {
     PRIMARY,
     SECONDARY,
+    TERTIARY,
     ERROR,
     SUCCESS,
     WARNING,
@@ -62,55 +64,63 @@ fun CustomButton(
 ) {
     val customColors = getCustomColors()
 
+    val defaultDisabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
+    val defaultDisabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+
     val (containerColor, contentColor, disabledContainerColor, disabledContentColor, borderColor) = when (color) {
         ButtonColor.PRIMARY -> listOf(
             MaterialTheme.colorScheme.primary,
             MaterialTheme.colorScheme.onPrimary,
-            customColors.gray200,
-            customColors.gray500,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
             MaterialTheme.colorScheme.primary
         )
         ButtonColor.SECONDARY -> listOf(
             MaterialTheme.colorScheme.secondary,
             MaterialTheme.colorScheme.onSecondary,
-            customColors.gray200,
-            customColors.gray500,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
             MaterialTheme.colorScheme.secondary
+        )
+        ButtonColor.TERTIARY -> listOf(
+            MaterialTheme.colorScheme.tertiary,
+            MaterialTheme.colorScheme.onTertiary,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
+            MaterialTheme.colorScheme.tertiary
         )
         ButtonColor.ERROR -> listOf(
             MaterialTheme.colorScheme.error,
             MaterialTheme.colorScheme.onError,
-            customColors.gray200,
-            customColors.gray500,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
             MaterialTheme.colorScheme.error
         )
         ButtonColor.SUCCESS -> listOf(
             customColors.success,
             Color.White,
-            customColors.gray200,
-            customColors.gray500,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
             customColors.success
         )
         ButtonColor.WARNING -> listOf(
             customColors.warning,
             Color.White,
-            customColors.gray200,
-            customColors.gray500,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
             customColors.warning
         )
         ButtonColor.INFO -> listOf(
             customColors.info,
             Color.White,
-            customColors.gray200,
-            customColors.gray500,
+            defaultDisabledContainerColor,
+            defaultDisabledContentColor,
             customColors.info
         )
     }
 
     val buttonModifier = modifier
-        .then(
-            if (fillMaxWidth) Modifier.fillMaxWidth() else Modifier
-        )
+        .then(if (fillMaxWidth) Modifier.fillMaxWidth() else Modifier)
         .height(48.dp)
 
     when (variant) {
@@ -149,7 +159,7 @@ fun CustomButton(
                 ),
                 border = BorderStroke(
                     width = 1.dp,
-                    color = if (enabled) borderColor else customColors.gray300
+                    color = if (enabled) borderColor else disabledContentColor
                 )
             ) {
                 ButtonContent(
@@ -224,40 +234,35 @@ private fun ButtonContent(
 @Composable
 fun CustomButtonPreview() {
     LinhirAppTheme {
-        androidx.compose.foundation.layout.Column(
+        Column(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CustomButton(
-                text = "Primario",
+                text = "Primary Button",
                 onClick = { },
                 color = ButtonColor.PRIMARY,
                 variant = ButtonVariant.FILLED,
-                fillMaxWidth = true
+                fillMaxWidth = true,
+                enabled = false
             )
 
             CustomButton(
-                text = "Error",
+                text = "Secondary Button",
                 onClick = { },
-                color = ButtonColor.ERROR,
+                color = ButtonColor.SECONDARY,
                 variant = ButtonVariant.FILLED,
-                fillMaxWidth = true
+                fillMaxWidth = true,
+                enabled = false
             )
 
             CustomButton(
-                text = "Éxito",
+                text = "Tertiary Button",
                 onClick = { },
-                color = ButtonColor.SUCCESS,
+                color = ButtonColor.TERTIARY,
                 variant = ButtonVariant.FILLED,
-                fillMaxWidth = true
-            )
-
-            CustomButton(
-                text = "Información",
-                onClick = { },
-                color = ButtonColor.INFO,
-                variant = ButtonVariant.FILLED,
-                fillMaxWidth = true
+                fillMaxWidth = true,
+                enabled = false
             )
         }
     }
