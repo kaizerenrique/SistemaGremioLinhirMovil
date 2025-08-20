@@ -9,3 +9,27 @@ Este proyecto busca ofrecer una plataforma de soporte para las actividades del g
 ## Autores ✒️
 * [kaizerenrique](https://github.com/kaizerenrique)
 * [Mayker451](https://github.com/michaelsandino)
+
+### Play Store version
+```
+versionCode 100
+versionName "1.0.0"
+```
+
+### Development version
+```
+versionCode 100
+versionName "1.0.0"
+```
+
+### SDK
+```
+compileSdk 36
+minSdk 24
+targetSdk 36
+```
+
+### Package name
+```
+online.linhir.app
+```
